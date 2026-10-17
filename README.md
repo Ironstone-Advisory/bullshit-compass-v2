@@ -1,3 +1,11 @@
+# Bullshit Compass v2
+
+*By Rob Tyrie, Ironstone Advisory · [ironstoneadvisory.com](https://ironstoneadvisory.com) · [@robtyrie](https://github.com/robtyrie)*
+
+> **This is version 2, the active version.** It inherits version 1's specs, code and commit history (April 2025) from [Ironstone-Advisory/BullshitCompass](https://github.com/Ironstone-Advisory/BullshitCompass). See [HISTORY.md](HISTORY.md) for the lineage and [CALIBRATION.md](CALIBRATION.md) for the first v2 finding: the v1 code needs calibrating before its scores mean anything.
+
+---
+
 # BullshitCompass
 The Bullshit Compass project aims to create software that identifies vague, fluffy, syntactically correct but meaningless language ("bullshit") in business texts like memos and pitch decks. Distinct from detecting lies, it focuses on linguistic fog. Development started spec-first (RFC FS02) due to the concept's complexity.
 # The Bullshit Compass 🧭

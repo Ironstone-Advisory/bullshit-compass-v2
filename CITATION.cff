@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use the Bullshit Compass, please cite it as below."
+title: "The Bullshit Compass (v2): spec-first detection of linguistic fog"
+type: software
+authors:
+  - family-names: Tyrie
+    given-names: Rob
+    affiliation: Ironstone Advisory
+    website: "https://ironstoneadvisory.com"
+repository-code: "https://github.com/Ironstone-Advisory/bullshit-compass-v2"
+license: MIT
+date-released: 2026-09-20
+keywords: [Bullshit Compass, RFC FS02, linguistic fog, Frankfurt, semantic pattern detection, Ironstone Advisory]
+references:
+  - type: software
+    title: "The Bullshit Compass (v1)"
+    authors: [{family-names: Tyrie, given-names: Rob}]
+    repository-code: "https://github.com/Ironstone-Advisory/BullshitCompass"
+    date-released: 2025-04-01
