@@ -1,0 +1,74 @@
+[
+  {
+    "id": "plain_deadline",
+    "text": "The project deadline is May 15th. We need to deliver the database migration and API endpoints by then.",
+    "expected_band": [
+      0,
+      0.2
+    ]
+  },
+  {
+    "id": "plain_science",
+    "text": "The estimated effect may be small. The confidence interval includes zero.",
+    "expected_band": [
+      0,
+      0.2
+    ]
+  },
+  {
+    "id": "plain_causal",
+    "text": "The server stopped because the disk was full.",
+    "expected_band": [
+      0,
+      0.2
+    ]
+  },
+  {
+    "id": "plain_technical",
+    "text": "The API uses OAuth tokens. The database index reduces query latency.",
+    "expected_band": [
+      0,
+      0.2
+    ]
+  },
+  {
+    "id": "plain_long",
+    "text": "The team measured response times before the release and after the release using the same workload and the same hardware.",
+    "expected_band": [
+      0,
+      0.2
+    ]
+  },
+  {
+    "id": "moderate",
+    "text": "Our world-class team will deliver the database migration by May 15 and publish the test results.",
+    "expected_band": [
+      0.25,
+      0.59
+    ]
+  },
+  {
+    "id": "fog_reported",
+    "text": "We are leveraging synergistic paradigms to actualize next-generation value-added solutions.",
+    "expected_band": [
+      0.6,
+      1
+    ]
+  },
+  {
+    "id": "fog_other",
+    "text": "Our holistic thought leadership will move the needle through transformative synergies.",
+    "expected_band": [
+      0.6,
+      1
+    ]
+  },
+  {
+    "id": "vague",
+    "text": "Somehow various things improve in certain areas and so on.",
+    "expected_band": [
+      0.6,
+      1
+    ]
+  }
+]
