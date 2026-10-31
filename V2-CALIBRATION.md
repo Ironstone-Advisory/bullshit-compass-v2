@@ -40,9 +40,15 @@ method returns `(score, analysis)`. Empty/non-word input returns a null score.
 
 ## RFC coverage and limitations
 
-All nine RFC names appear in the output. BLI and AAR have limited lexical proxies;
+All nine original RFC names and the EA/DC/RR extensions appear in the output.
+The [v2 extension](docs/FS02-v2-extension.md) and
+[master prompt](prompts/bullshit-compass-master-prompt.txt) define the twelve-dimension
+qualitative review. BLI and AAR have limited lexical proxies;
 TCR has only an adjacent repetition proxy. ISI, SDS, PRM, EPF, OOI and DPO remain
-`not_assessed`, with null scores, rather than misleading zeros. LGC requires human
+`not_assessed`, with null scores, rather than misleading zeros. EA (Evidence
+Alignment), DC (Decision Completeness), and RR (Response Relevance) also remain
+`not_assessed` in this lexical baseline. Adding their output fields does not change
+the lexical score or implement their semantic review. LGC requires human
 context review; the allowlist is an explicit user override, not genre detection.
 
 The overall scalar is labeled `unvalidated_lexical_warning_intensity`, not the RFC

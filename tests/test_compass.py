@@ -68,8 +68,9 @@ class CalibrationTests(unittest.TestCase):
 
     def test_no_fabricated_semantic_scores(self):
         result = self.compass.analyze('The result may change after further research.')
-        for indicator in ['ISI', 'SDS', 'PRM', 'EPF', 'OOI', 'DPO']:
+        for indicator in ['ISI', 'SDS', 'PRM', 'EPF', 'OOI', 'DPO', 'EA', 'DC', 'RR']:
             self.assertIsNone(result['indicators'][indicator]['score'])
+            self.assertEqual(result['indicators'][indicator]['status'], 'not_assessed')
         self.assertEqual(result['LGC']['status'], 'manual_context_required')
         self.assertNotIn('clear and substantive', result['interpretation'].lower())
 

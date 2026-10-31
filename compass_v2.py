@@ -22,7 +22,8 @@ VAGUE = (
     "somehow", "somewhat", "in some way", "in certain areas",
     "various things", "certain things", "some things", "and so on",
 )
-INDICATORS = ("TCR", "ISI", "SDS", "AAR", "BLI", "PRM", "EPF", "OOI", "DPO")
+INDICATORS = ("TCR", "ISI", "SDS", "AAR", "BLI", "PRM", "EPF", "OOI", "DPO",
+              "EA", "DC", "RR")
 
 
 def tokens(text):
@@ -125,7 +126,7 @@ class BullshitCompass:
             "word_count": count, "indicators": profile,
             "LGC": {"status": "manual_context_required", "allowed_terms":
                     sorted(set(JARGON) - set(self.jargon))},
-            "limitations": ["English lexical baseline; not full RFC FS02 implementation",
+            "limitations": ["English lexical baseline; not full RFC FS02 or EA/DC/RR implementation",
                             "Cannot determine truth, intent, semantic emptiness or genre",
                             "Quoted jargon and legitimate specialist terms can trigger warnings",
                             "Low scores do not establish clarity or substance"],

@@ -4,6 +4,23 @@
 
 > **This is version 2, the active version.** It inherits version 1's specs, code and commit history (April 2025) from [Ironstone-Advisory/BullshitCompass](https://github.com/Ironstone-Advisory/BullshitCompass). See [HISTORY.md](HISTORY.md) for the lineage and [CALIBRATION.md](CALIBRATION.md) for the first v2 finding: the v1 code needs calibrating before its scores mean anything.
 
+## Twelve-dimension qualitative review (31 October 2026)
+
+Use the [master review prompt](prompts/bullshit-compass-master-prompt.txt) with
+uploaded documents, pasted text or URLs. It retains the nine original indicators
+and adds **Evidence Alignment (EA)**, **Decision Completeness (DC)** and
+**Response Relevance (RR)**. LGC remains the context layer.
+
+The [v2 extension and synthesis note](docs/FS02-v2-extension.md) defines the
+additions, credits the research and explains why and how we adapted it. Each
+dimension has applicability rules, examples and boundaries to avoid double counting.
+The review applies to human and AI-created material, including source-fidelity
+checks where originals are available; it does not identify AI authorship.
+
+The prompt supplies qualitative review instructions. The Python baseline below
+does not implement semantic assessment of these dimensions; it reports the new
+fields as `not_assessed` rather than inventing scores.
+
 ## Runnable v2 baseline (31 October 2026)
 
 The historical scorer failed its initial calibration. Use [compass_v2.py](compass_v2.py)
