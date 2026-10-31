@@ -4,6 +4,38 @@
 
 > **This is version 2, the active version.** It inherits version 1's specs, code and commit history (April 2025) from [Ironstone-Advisory/BullshitCompass](https://github.com/Ironstone-Advisory/BullshitCompass). See [HISTORY.md](HISTORY.md) for the lineage and [CALIBRATION.md](CALIBRATION.md) for the first v2 finding: the v1 code needs calibrating before its scores mean anything.
 
+## Twelve-dimension qualitative review (31 October 2026)
+
+Use the [master review prompt](prompts/bullshit-compass-master-prompt.txt) with
+uploaded documents, pasted text or URLs. It retains the nine original indicators
+and adds **Evidence Alignment (EA)**, **Decision Completeness (DC)** and
+**Response Relevance (RR)**. LGC remains the context layer.
+
+The [v2 extension and synthesis note](docs/FS02-v2-extension.md) defines the
+additions, credits the research and explains why and how we adapted it. Each
+dimension has applicability rules, examples and boundaries to avoid double counting.
+The review applies to human and AI-created material, including source-fidelity
+checks where originals are available; it does not identify AI authorship.
+
+The prompt supplies qualitative review instructions. The Python baseline below
+does not implement semantic assessment of these dimensions; it reports the new
+fields as `not_assessed` rather than inventing scores.
+
+## Runnable v2 baseline (31 October 2026)
+
+The historical scorer failed its initial calibration. Use [compass_v2.py](compass_v2.py)
+for the corrected **lexical warning baseline**, with regression tests and explicit
+unassessed RFC indicators. It does not yet implement the full semantic framework.
+See [V2-CALIBRATION.md](V2-CALIBRATION.md) for migration, results and limitations.
+
+```bash
+python compass_v2.py document.txt
+python -m unittest discover -s tests -v
+```
+
+Python 3.10+; standard library only. The original `code` file is historical and
+still has the reported defects. Do not use its scores for decisions.
+
 ---
 
 # BullshitCompass
@@ -12,7 +44,7 @@ The Bullshit Compass project aims to create software that identifies vague, fluf
 
 **Detecting the Fluffy, Plausible Fog: A Spec-First Approach to Linguistic Clarity**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Status: Experimental](https://img.shields.io/badge/status-experimental-red.svg)](./spec/FS02_Bullshit_Compass.md) ---
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Status: Experimental](https://img.shields.io/badge/status-experimental-red.svg)](./spec-original) ---
 
 > *"Back in the early internet days... there was this beautifully nerdy ritual called writing an RFC... They were born as documents... Because once you’ve got a solid spec, the code becomes the easy part. (Roughly speaking.)"*
 
@@ -45,7 +77,7 @@ It analyzes text for characteristics such as:
 
 The underlying logic is informed by philosophical work (e.g., Harry Frankfurt's "On Bullshit"), linguistic studies (e.g., Pennycook), and satirical observations (e.g., Ambrose Bierce). The goal is to provide a quantitative and qualitative assessment of text clarity and substance.
 
-* **Read the Draft Specification:** [RFC FS02: The Bullshit Compass](./spec/FS02_Bullshit_Compass.md) *(Link to your spec file)*
+* **Read the Draft Specification:** [RFC FS02: The Bullshit Compass](./spec-original) *(Link to your spec file)*
 
 ## The Fingerprint Spider Platform (RFC FS01)
 
@@ -116,6 +148,3 @@ Request for Comments! 😁🧠🤖👾👨‍⚖️👍🤯🎲🪙🃏🙊🙉�
 What are your thoughts? We believe this way leads to clarity, to integrity—and maybe even to less bullshit.
 
 Open an Issue to share your feedback, critique the specifications, or discuss the underlying philosophy.
-
-
-
