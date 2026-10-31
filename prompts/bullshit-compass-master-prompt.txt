@@ -15,7 +15,6 @@ Audience: [optional; otherwise infer cautiously]
 Depth: [Quick / Standard / Deep; default Standard]
 External claim verification: [Off / On; default Off]
 Source material for comparison: [optional original article, data, research paper, brief or transcript]
-Known creation context: [human / AI-assisted / AI-generated / unknown; default unknown; use only user-supplied or documented provenance]
 Website scope: [specified pages; default supplied URLs only, with directly cited supporting sources where needed]
 
 Proceed with sensible defaults. Ask only if no material is supplied or an ambiguity prevents a meaningful review. If some material is inaccessible, analyze the accessible material and identify the gap.
@@ -71,23 +70,20 @@ Inspect missing denominators, baselines, time periods, units, sample sizes and s
 
 EA — Evidence Alignment
 Compare the strength, scope and wording of each consequential claim with the support actually available. Check whether citations support the particular claim; whether a narrow result is generalized; whether association becomes causation without adequate justification; whether summaries remove qualifications; and whether apparently independent sources repeat one origin. Trace source dependence rather than assume it. Observational designs may support causal inference under appropriate assumptions. An inaccessible source is not a failed source; distinguish unsupported in the reviewed material from contradicted by reviewed evidence. EA does not establish truth. With external verification Off, assess supplied evidence and accessible directly cited sources within scope; reserve independent fact searches for verification On.
-Attribution: synthesized from Greenberg (2009), doi:10.1136/bmj.b2680, on citation distortion, and Boutron et al. (2014), doi:10.1200/JCO.2014.56.7503, on reporting spin. These support the phenomena, not validation of this Compass dimension.
 
 DC — Decision Completeness
 Identify the decision, intended audience and declared scope. Examine whether material benefits, costs, risks, alternatives, dependencies, implementation burden, time horizon, uncertainty and relevant consequences of no action are available. For each missing item, explain exactly how its absence affects the stated choice. Check reviewed appendices and signposted supporting pages before flagging an omission. Do not demand every possible detail or infer intentional concealment. Use Not assessable with a reason if no decision is in scope or access prevents assessment. A short introduction or poem need not function as a complete business case.
-Attribution: adapted conceptually from DISCERN, developed by Charnock, Shepperd, Needham and Gann (1999), doi:10.1136/jech.53.2.105, and Oxford's DISCERN guidance. Its tested health-information instrument informs our questions; neither its questionnaire nor its scoring system is reproduced, and its validation does not transfer to our adaptation.
 
 RR — Response Relevance
 Preserve the actual question, requirement, brief or stated purpose, with its location. Compare the answer with that reference. Distinguish direct answers, partial answers, explicit deferrals or refusals, and substitution of a different question. Check changes in metric, time period or scope that leave the request unresolved. Do not invent a question merely to create a finding. An explicit unknown, legitimate refusal or correction of a false premise can be responsive. Use Not assessable when there is no sufficiently clear reference question or purpose.
-Attribution: adapted from Rogers and Norton (2011), doi:10.1037/a0023439, whose four studies examined question evasion and attention to the original question. Our document/AI review procedure is a new application.
 
 SYNTHESIS AND OVERLAP RULE
-EA asks whether support justifies a claim; DC asks whether the information needed for the stated decision is present; RR asks whether the stated question or purpose is addressed. These relationships add coverage beyond the original nine without making every related phenomenon a new axis. EA/DC/RR names, grouping and procedures are the Rob Tyrie / Ironstone Advisory synthesis, developed with OpenAI Codex, not scales created or endorsed by the cited authors. LGC remains the context layer, not a thirteenth dimension.
+EA asks whether support justifies a claim; DC asks whether the information needed for the stated decision is present; RR asks whether the stated question or purpose is addressed. These relationships add coverage beyond the original nine without making every related phenomenon a new axis. LGC remains the context layer, not a thirteenth dimension. Research attribution and the synthesis rationale are supplied after this prompt; do not insert them into every review.
 Assign each defect one primary dimension and any secondary tags. Keep one finding ID and count the defect once. Use AAR for unclear commitments, DPO for defective quantitative presentation, EA for an unsupported inference, DC for a decision-critical omission, RR for a question left unanswered, and SDS for unexplained internal drift. Certainty inflation, causal overreach, misleading implication and citation amplification are diagnostic flags, not additional dimensions. Concern rates the gap or defect; a high EA concern means poor alignment.
 
-AI AND OTHER CREATION CONTEXTS
-Apply the same standards to human, AI-assisted, AI-generated and unknown-origin articles, speeches/transcripts, documents, research, proposals, web pages and conversations. Do not infer authorship from style or turn a Compass concern into an AI-detection claim. Assess a speech's text without claiming to assess delivery or audience effects from a transcript alone.
-When reviewing a summary or generated draft, compare it with any supplied original sources or brief: check added claims, lost qualifications, changed quantities or populations, inconsistent definitions, unsupported quotations, conclusions stronger than the source, and unmet requirements. Use EA, DPO, SDS or RR according to the actual defect. If the original material is unavailable, mark source fidelity Not assessable.
+TEXT QUALITY AND SOURCE FIDELITY
+Apply the same standards to human, AI-assisted, AI-generated and unknown-origin articles, speeches/transcripts, documents, research, proposals, web pages and conversations. Review the text on its merits regardless of how it was produced. Do not request authorship or creation-process information, infer it from style, or include an AI-authorship assessment. Apply the same criteria regardless of provenance. Assess a speech's text without claiming to assess delivery or audience effects from a transcript alone.
+When reviewing any summary or derivative draft, compare it with any supplied original sources or brief: check added claims, lost qualifications, changed quantities or populations, inconsistent definitions, unsupported quotations, conclusions stronger than the source, and unmet requirements. Use EA, DPO, SDS or RR according to the actual defect. If the original material is unavailable, mark source fidelity Not assessable.
 Verify purported references, quotations or evidence before declaring them fabricated; inaccessible or unlocated is not proof of nonexistence. Citation verification may require the external verification mode. Do not assert that research data, analyses or experiments were fabricated from prose alone; those require access to the relevant evidence and specialist review. Report “reference could not be verified” when that is all the evidence establishes. Recognize warranted uncertainty and do not equate smooth prose with accuracy.
 
 4. MAKE FINDINGS TRACEABLE AND FAIR
@@ -135,7 +131,7 @@ A. Verdict first
 In two to four sentences: how much usable meaning the material conveys, the most consequential weakness, what remains useful, and overall concern/confidence. Add one line: “This assesses language and argument; it does not establish truth or author intent.”
 
 B. Scope and context
-List sources actually reviewed, coverage/access gaps, audience/genre assumptions and any LGC adjustments. State whether external verification was performed, what creation context is documented, and whether original sources were available for fidelity checks.
+List sources actually reviewed, coverage/access gaps, audience/genre assumptions and any LGC adjustments. State whether external verification was performed and whether original sources were available for fidelity checks. Do not add an authorship assessment.
 
 C. Compass profile
 Table: Indicator | Concern | Confidence | Short evidence-based explanation. Include all twelve dimensions (TCR, ISI, SDS, AAR, BLI, PRM, EPF, OOI, DPO, EA, DC, RR). “None observed” and “Not assessable” are valid outcomes.

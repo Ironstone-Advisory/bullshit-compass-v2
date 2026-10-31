@@ -242,11 +242,11 @@ coverage and must not treat inaccessible content as absent content.
 
 The twelve dimensions apply to human, AI-assisted, AI-generated and unknown-origin
 articles, speeches/transcripts, documents, research, proposals and conversations.
-Creation context is user-supplied or documented metadata, never inferred from
-Compass ratings. The framework identifies text problems; it is not an AI-authorship
-detector.
+Review the text on its merits regardless of provenance. Authorship is not an
+input requirement or a review output and must not change the assessment. The
+framework identifies text problems; it does not infer how the text was produced.
 
-For generated summaries or drafts, compare against supplied originals or the brief:
+For any summary or derivative draft, compare against supplied originals or the brief:
 identify unsupported additions, lost caveats, changed quantities, inconsistent
 definitions and missed requirements. Attribute a source-fidelity finding to EA,
 DPO, SDS or RR as appropriate. Without originals, source fidelity is not assessable.
