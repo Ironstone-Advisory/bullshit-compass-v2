@@ -80,3 +80,10 @@ calibration of any future full composite. The original CALIBRATION.md remains th
 historical failure report.
 
 Implementation prepared with OpenAI Codex.
+
+See [Evaluation and software traceability](docs/EVALUATION-AND-TRACEABILITY.md)
+for the proposed evaluation procedure, and [Background and provenance](docs/BACKGROUND-AND-PROVENANCE.md)
+for source influences, original contributions and transfer limits. These documents
+add guidance; they do not change baseline behavior or constitute completed
+semantic evaluation.
+

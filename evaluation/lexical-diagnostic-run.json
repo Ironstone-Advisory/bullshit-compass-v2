@@ -1,0 +1,489 @@
+{
+  "record_type": "lexical_baseline_diagnostic",
+  "recorded_date": "2026-10-31",
+  "run_id": "lexical-diagnostic-2026-10-31-01",
+  "purpose": "Demonstrate scope limits; not a semantic benchmark or accuracy estimate.",
+  "repository_commit": "9b0d5b7e6b23da9506af8adb427c68e9504eda94",
+  "code_git_blob": "27871dc42e0af92f3d5e8fda59835de39c3ce8fd",
+  "code_sha256": "3353f486fe14c2ed412435c3a426e9d2656117fbaf0db4dee03cdc9c5a5b32ae",
+  "python_version": "3.12.14",
+  "semantic_model": null,
+  "external_verification": false,
+  "command_recipe": "Load BullshitCompass from the recorded code revision; call analyze(text) for each input_text below. No allow-term overrides.",
+  "cases": [
+    {
+      "case_id": "TCR-P",
+      "input_text": "This policy works because it is effective. We know it is effective because it works.",
+      "input_sha256": "8840437535defd6f28c1dab740caf48546549c3650c9763d62ffa98788b538ed",
+      "raw_result": {
+        "status": "partial_assessment",
+        "overall_score": 0.0,
+        "score_kind": "unvalidated_lexical_warning_intensity",
+        "interpretation": "Few lexical warning patterns detected; substance not verified",
+        "word_count": 15,
+        "indicators": {
+          "TCR": {
+            "status": "repetition_proxy",
+            "score": 0.0,
+            "matches": [],
+            "note": "Adjacent exact repetition only; excluded from overall score."
+          },
+          "ISI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "SDS": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "AAR": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "BLI": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "PRM": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EPF": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "OOI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DPO": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EA": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DC": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "RR": {
+            "status": "not_assessed",
+            "score": null
+          }
+        },
+        "LGC": {
+          "status": "manual_context_required",
+          "allowed_terms": []
+        },
+        "limitations": [
+          "English lexical baseline; not full RFC FS02 or EA/DC/RR implementation",
+          "Cannot determine truth, intent, semantic emptiness or genre",
+          "Quoted jargon and legitimate specialist terms can trigger warnings",
+          "Low scores do not establish clarity or substance"
+        ]
+      }
+    },
+    {
+      "case_id": "TCR-N",
+      "input_text": "In this report, 'on time' means received before 17:00 on the agreed delivery date.",
+      "input_sha256": "92d3a8d60fc92566ff1d3576f950dcaa4cdce56aa76e9d7637c75a0656f56c6c",
+      "raw_result": {
+        "status": "partial_assessment",
+        "overall_score": 0.0,
+        "score_kind": "unvalidated_lexical_warning_intensity",
+        "interpretation": "Few lexical warning patterns detected; substance not verified",
+        "word_count": 15,
+        "indicators": {
+          "TCR": {
+            "status": "repetition_proxy",
+            "score": 0.0,
+            "matches": [],
+            "note": "Adjacent exact repetition only; excluded from overall score."
+          },
+          "ISI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "SDS": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "AAR": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "BLI": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "PRM": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EPF": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "OOI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DPO": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EA": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DC": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "RR": {
+            "status": "not_assessed",
+            "score": null
+          }
+        },
+        "LGC": {
+          "status": "manual_context_required",
+          "allowed_terms": []
+        },
+        "limitations": [
+          "English lexical baseline; not full RFC FS02 or EA/DC/RR implementation",
+          "Cannot determine truth, intent, semantic emptiness or genre",
+          "Quoted jargon and legitimate specialist terms can trigger warnings",
+          "Low scores do not establish clarity or substance"
+        ]
+      }
+    },
+    {
+      "case_id": "BLI-N",
+      "input_text": "Leverage here means assets divided by equity: assets of 200 million divided by equity of 100 million give leverage of 2.",
+      "input_sha256": "8027d69b997380e417c4ec2346153e9d98cc4b90041e7eb57e45b65b7bce00f4",
+      "raw_result": {
+        "status": "partial_assessment",
+        "overall_score": 0.238095,
+        "score_kind": "unvalidated_lexical_warning_intensity",
+        "interpretation": "Few lexical warning patterns detected; substance not verified",
+        "word_count": 21,
+        "indicators": {
+          "TCR": {
+            "status": "repetition_proxy",
+            "score": 0.0,
+            "matches": [],
+            "note": "Adjacent exact repetition only; excluded from overall score."
+          },
+          "ISI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "SDS": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "AAR": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "BLI": {
+            "status": "lexical_proxy",
+            "score": 0.09523809523809523,
+            "matches": [
+              {
+                "text": "Leverage",
+                "start": 0,
+                "end": 8,
+                "token_count": 1
+              },
+              {
+                "text": "leverage",
+                "start": 106,
+                "end": 114,
+                "token_count": 1
+              }
+            ]
+          },
+          "PRM": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EPF": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "OOI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DPO": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EA": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DC": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "RR": {
+            "status": "not_assessed",
+            "score": null
+          }
+        },
+        "LGC": {
+          "status": "manual_context_required",
+          "allowed_terms": []
+        },
+        "limitations": [
+          "English lexical baseline; not full RFC FS02 or EA/DC/RR implementation",
+          "Cannot determine truth, intent, semantic emptiness or genre",
+          "Quoted jargon and legitimate specialist terms can trigger warnings",
+          "Low scores do not establish clarity or substance"
+        ]
+      }
+    },
+    {
+      "case_id": "AAR-P",
+      "input_text": "We will improve outcomes soon.",
+      "input_sha256": "6e9365735e4e1af840b5f57e97aaaa42a396a6b532234685e17f7cc2436838f9",
+      "raw_result": {
+        "status": "partial_assessment",
+        "overall_score": 0.0,
+        "score_kind": "unvalidated_lexical_warning_intensity",
+        "interpretation": "Few lexical warning patterns detected; substance not verified",
+        "word_count": 5,
+        "indicators": {
+          "TCR": {
+            "status": "repetition_proxy",
+            "score": 0.0,
+            "matches": [],
+            "note": "Adjacent exact repetition only; excluded from overall score."
+          },
+          "ISI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "SDS": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "AAR": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "BLI": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "PRM": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EPF": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "OOI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DPO": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EA": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DC": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "RR": {
+            "status": "not_assessed",
+            "score": null
+          }
+        },
+        "LGC": {
+          "status": "manual_context_required",
+          "allowed_terms": []
+        },
+        "limitations": [
+          "English lexical baseline; not full RFC FS02 or EA/DC/RR implementation",
+          "Cannot determine truth, intent, semantic emptiness or genre",
+          "Quoted jargon and legitimate specialist terms can trigger warnings",
+          "Low scores do not establish clarity or substance"
+        ]
+      }
+    },
+    {
+      "case_id": "EA-P",
+      "input_text": "The pilot proves that every department will complete every task 20% faster.",
+      "input_sha256": "7c6b3191c78f2d9e1342d7c79c15cc768d52034e22385b71ce52d82619a8e18b",
+      "raw_result": {
+        "status": "partial_assessment",
+        "overall_score": 0.0,
+        "score_kind": "unvalidated_lexical_warning_intensity",
+        "interpretation": "Few lexical warning patterns detected; substance not verified",
+        "word_count": 12,
+        "indicators": {
+          "TCR": {
+            "status": "repetition_proxy",
+            "score": 0.0,
+            "matches": [],
+            "note": "Adjacent exact repetition only; excluded from overall score."
+          },
+          "ISI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "SDS": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "AAR": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "BLI": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "PRM": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EPF": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "OOI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DPO": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EA": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DC": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "RR": {
+            "status": "not_assessed",
+            "score": null
+          }
+        },
+        "LGC": {
+          "status": "manual_context_required",
+          "allowed_terms": []
+        },
+        "limitations": [
+          "English lexical baseline; not full RFC FS02 or EA/DC/RR implementation",
+          "Cannot determine truth, intent, semantic emptiness or genre",
+          "Quoted jargon and legitimate specialist terms can trigger warnings",
+          "Low scores do not establish clarity or substance"
+        ]
+      }
+    },
+    {
+      "case_id": "LEX-EXACT-REPETITION",
+      "input_text": "The report arrives on Friday. The report arrives on Friday.",
+      "input_sha256": "1a65d8319902030ee7c5540e79bb63469d6cf56512d3054b1f0d39b143a2f325",
+      "raw_result": {
+        "status": "partial_assessment",
+        "overall_score": 0.0,
+        "score_kind": "unvalidated_lexical_warning_intensity",
+        "interpretation": "Few lexical warning patterns detected; substance not verified",
+        "word_count": 10,
+        "indicators": {
+          "TCR": {
+            "status": "repetition_proxy",
+            "score": 1.0,
+            "matches": [
+              {
+                "sentence": 2,
+                "text": "The report arrives on Friday"
+              }
+            ],
+            "note": "Adjacent exact repetition only; excluded from overall score."
+          },
+          "ISI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "SDS": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "AAR": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "BLI": {
+            "status": "lexical_proxy",
+            "score": 0.0,
+            "matches": []
+          },
+          "PRM": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EPF": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "OOI": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DPO": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "EA": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "DC": {
+            "status": "not_assessed",
+            "score": null
+          },
+          "RR": {
+            "status": "not_assessed",
+            "score": null
+          }
+        },
+        "LGC": {
+          "status": "manual_context_required",
+          "allowed_terms": []
+        },
+        "limitations": [
+          "English lexical baseline; not full RFC FS02 or EA/DC/RR implementation",
+          "Cannot determine truth, intent, semantic emptiness or genre",
+          "Quoted jargon and legitimate specialist terms can trigger warnings",
+          "Low scores do not establish clarity or substance"
+        ]
+      }
+    }
+  ]
+}

@@ -4,6 +4,13 @@ Version 1.0 · 31 October 2026
 Framework: Rob Tyrie / Ironstone Advisory / Finger Spider Project  
 Research synthesis and drafting: Rob Tyrie with OpenAI Codex
 
+For the original project contributions and the Frankfurt, Pennycook and Graeber
+influences, see [Background and provenance](BACKGROUND-AND-PROVENANCE.md).
+The [development ledger](../history/provenance/2026-10-31-conversation-reconstruction.md)
+separates author accounts, recovered conversations and repository artifacts.
+The [evaluation plan](EVALUATION-AND-TRACEABILITY.md) connects future tests and
+software versions to design rules and observed results.
+
 ## Decision and scope
 
 Extend the nine-indicator RFC FS02 profile with **Evidence Alignment (EA)**,
@@ -307,3 +314,4 @@ rights and terms. No endorsement by their authors or institutions is implied.
 
 © 2026 Ironstone Advisory. Original synthesis: CC BY 4.0.
 Underlying repository code remains subject to its existing MIT license.
+

@@ -2,7 +2,27 @@
 
 *By Rob Tyrie, Ironstone Advisory · [ironstoneadvisory.com](https://ironstoneadvisory.com) · [@robtyrie](https://github.com/robtyrie)*
 
-> **This is version 2, the active version.** It inherits version 1's specs, code and commit history (April 2025) from [Ironstone-Advisory/BullshitCompass](https://github.com/Ironstone-Advisory/BullshitCompass). See [HISTORY.md](HISTORY.md) for the lineage and [CALIBRATION.md](CALIBRATION.md) for the first v2 finding: the v1 code needs calibrating before its scores mean anything.
+> **This is version 2, the active version.** It inherits the April 2025 repository history from [Ironstone-Advisory/BullshitCompass](https://github.com/Ironstone-Advisory/BullshitCompass). Rob Tyrie reports beginning the idea in 2022 and making a first version in 2024; recovered conversation excerpts document related inquiry in 2023 and a practical review experiment in 2024. These different kinds of evidence are recorded in [HISTORY.md](HISTORY.md).
+
+## Background and provenance
+
+Frankfurt, Gordon Pennycook and colleagues, and Graeber are foundational influences.
+They provided starting points for Rob Tyrie's own framework and measures. In
+particular, Rob identifies the Peterson-derived measure of tautological camouflage
+as his original design contribution, arising from his observations of argument
+and exposition, rather than a measure borrowed from those researchers. Historical
+drafts develop this through TCR and PWI; PWI is subsequently refined into ISI.
+Authorship, research influence and empirical validation are recorded separately.
+
+- [Background, contributions and attribution](docs/BACKGROUND-AND-PROVENANCE.md)
+- [Development evidence ledger](history/provenance/2026-10-31-conversation-reconstruction.md)
+- [Evaluation and software traceability](docs/EVALUATION-AND-TRACEABILITY.md)
+- [Twelve-measure review](docs/MEASURE-REVIEW.md) and [test plan](docs/TEST-PLAN.md),
+  with [36 authored pilot cases](evaluation/pilot-cases.json)
+
+The current review is qualitative and assesses text irrespective of human or AI
+authorship. Framework attribution belongs in these documents; individual reviews
+should concentrate on findings, evidence and repairs.
 
 ## Twelve-dimension qualitative review (31 October 2026)
 
@@ -37,6 +57,12 @@ Python 3.10+; standard library only. The original `code` file is historical and
 still has the reported defects. Do not use its scores for decisions.
 
 ---
+
+## Historical README
+
+The inherited description below records earlier ambitions and draft terminology.
+Its numeric scoring, packaging and integration claims are historical proposals;
+use the current instructions and implementation status above.
 
 # BullshitCompass
 The Bullshit Compass project aims to create software that identifies vague, fluffy, syntactically correct but meaningless language ("bullshit") in business texts like memos and pitch decks. Distinct from detecting lies, it focuses on linguistic fog. Development started spec-first (RFC FS02) due to the concept's complexity.
@@ -117,6 +143,7 @@ This project is currently **experimental**. The specifications are drafts, and t
 # score, analysis = assess(text)
 # print(f"Bullshit Score: {score}")
 # print(analysis)
+```
 
 Specification-Driven Development
 This project is committed to a spec-first development process. Please refer to the /spec directory for the governing RFC documents:
@@ -148,3 +175,4 @@ Request for Comments! 😁🧠🤖👾👨‍⚖️👍🤯🎲🪙🃏🙊🙉�
 What are your thoughts? We believe this way leads to clarity, to integrity—and maybe even to less bullshit.
 
 Open an Issue to share your feedback, critique the specifications, or discuss the underlying philosophy.
+
