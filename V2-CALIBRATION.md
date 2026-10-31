@@ -51,6 +51,15 @@ Alignment), DC (Decision Completeness), and RR (Response Relevance) also remain
 the lexical score or implement their semantic review. LGC requires human
 context review; the allowlist is an explicit user override, not genre detection.
 
+The prompt 1.2 clarification adds `reason_code` and `reason` to `not_assessed`
+indicator entries. With nonempty text, the nine unimplemented dimensions use
+`unsupported_capability`. With empty/non-word input, all twelve use
+`insufficient_context`. The baseline does not infer `not_applicable` or
+`inaccessible_material` from text; those judgments need contextual review or an
+input pipeline. The BLI/AAR/TCR proxy entries retain their existing status names
+and scores, and TCR explicitly disclaims circular-support/addition assessment.
+This is an additive output change; lexical scoring and the legacy tuple are unchanged.
+
 The overall scalar is labeled `unvalidated_lexical_warning_intensity`, not the RFC
 Composite Bullshit Score, semantic quality, a truth score or a probability.
 Quoted jargon and legitimate technical usage can trigger it. Unlisted empty
@@ -68,10 +77,11 @@ The original reported fog sentence now produces 1.0 lexical warning intensity;
 the deadline example produces 0.0. These values are not comparable to v1's
 composite numbers and do not establish general detection accuracy.
 
-Twelve tests cover fixture bands and separation, length invariance, mixed-content
+Fourteen tests cover fixture bands and separation, length invariance, mixed-content
 weighting, hyphens/case, token boundaries and repeated phrases, source offsets,
 related-but-distinct sentences, adjacent-only repetition, honest missing coverage,
-empty input, context overrides, and the CLI/tuple interface. They pass locally.
+empty input, context overrides, and the CLI/tuple interface, plus reason-code
+distinctions and the separation of repetition from semantic coverage. They pass locally.
 The GitHub workflow runs them on Python 3.10, 3.12 and 3.13.
 
 Remaining research: independent human labels, held-out evaluation, genre/cultural

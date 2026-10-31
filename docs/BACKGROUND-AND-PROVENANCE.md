@@ -131,7 +131,7 @@ connects sources and design decisions to cases, reference judgments, versioned
 implementations and results, retaining disagreements and revisions.
 
 The [measure review](MEASURE-REVIEW.md) audits all twelve dimensions. The
-[test plan](TEST-PLAN.md) includes 36 authored cases and a separate test of the
+[test plan](TEST-PLAN.md) includes 44 authored cases (dataset 1.1) and a separate test of the
 proposed components of Rob's Peterson-derived construct.
 
 ## Primary references

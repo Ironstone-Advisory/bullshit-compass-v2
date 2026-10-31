@@ -1,6 +1,6 @@
 # Bullshit Compass test plan
 
-Plan 1.0 · 31 October 2026
+Plan 1.1 · 31 October 2026
 
 ## Objective and present status
 
@@ -11,13 +11,14 @@ measure as its own design contribution, not as a validated result of another
 researcher's work.
 
 Completed for this update: [design audit of all twelve measures](MEASURE-REVIEW.md),
-36 authored development cases, unchanged lexical-baseline regression tests, and a
-small lexical diagnostic run. **No independent semantic evaluation, model
+44 authored development cases, the four operational clarifications in prompt
+1.2, and fourteen lexical-baseline regression tests. The earlier lexical
+diagnostic run is retained with its original code/version record. **No independent semantic evaluation, model
 comparison or real-document acceptance test has been completed.**
 
 ## Materials ready for review
 
-[evaluation/pilot-cases.json](../evaluation/pilot-cases.json) contains:
+[evaluation/pilot-cases.json](../evaluation/pilot-cases.json), dataset 1.1, contains:
 
 - 24 cases: a target-defect and non-finding contrast for each of the twelve dimensions.
 - Eight boundary/control cases: inaccessible evidence, no decision, no reference
@@ -26,6 +27,17 @@ comparison or real-document acceptance test has been completed.**
 - Four factorial cases for the original Peterson-derived construct: circular
   support absent/present crossed with unsupported argumentative addition
   absent/present. These test TCR/ISI components, not a new thirteenth dimension.
+- Eight clarification cases: repetition without circularity, an explicit
+  unsupported addition, causal overreach with sound numeric presentation, two
+  distinct DPO/EA defects, a proposed Moderate evidence-gap anchor, and three
+  contrasts for inapplicability, blocked material and missing decision context.
+
+Schema 1.1 adds provisional `expected.reason_code`, `concern_by_dimension` and
+`target_finding_count` fields. The count applies only to distinct defects in the
+target dimensions. These fields are reference hypotheses, never model inputs.
+The Python regression suite separately checks `unsupported_capability` on
+unassessed semantic dimensions and `insufficient_context` on empty input; these
+tests do not execute the semantic prompt or substitute for reviewer judgments.
 
 All source texts are fictional, authored development material. Provisional
 expectations apply only to the stated target dimensions; a no-flag expectation is
@@ -42,9 +54,9 @@ pair, provide the simulated origin label deliberately and record that interventi
 
 | Stage | Work | Complete when |
 |---|---|---|
-| 0. Construct review | Rob reviews the original-contribution account and the TCR/PWI/ISI distinctions. Resolve or explicitly retain the audit's DPO/EA overlap, concern-anchor and applicability questions. | A versioned rubric is selected for the pilot; unresolved disagreements are recorded. |
-| 1. Reference judgments | Two reviewers independently label all twelve dimensions and locate evidence in the 36 cases, before seeing model outputs. Use a third reviewer to adjudicate unresolved material disagreements. | Independent labels, non-findings, access/applicability reasons and adjudication history are preserved. |
-| 2. Prompt pilot | Run the frozen rubric against all 36 cases, three times on each of two selected model families/configurations: 216 analyses. Record exact prompt, model/settings, outputs and failures. | Results are scored against the reviewed references, with target-dimension results and unexpected findings reported separately. |
+| 0. Construct review | The four requested clarifications are implemented in prompt 1.2 and extension 1.1. Review their operational wording, original-contribution account and candidate labels before freezing the rubric. | A versioned rubric is selected for the pilot; unresolved disagreements are recorded. Author authorization of the edits is not independent validation. |
+| 1. Reference judgments | Two reviewers independently label all twelve dimensions and locate evidence in the 44 cases, before seeing model outputs. Use a third reviewer to adjudicate unresolved material disagreements. | Independent labels, non-findings, access/applicability reason codes and adjudication history are preserved. |
+| 2. Prompt pilot | Run the frozen rubric against all 44 cases, three times on each of two selected model families/configurations: 264 analyses. Record exact prompt, model/settings, outputs and failures. | Results are scored against the reviewed references, with target-dimension results and unexpected findings reported separately. |
 | 3. Input pipeline | Exercise equivalent text, PDF, DOCX, scan, table and bounded website inputs once the relevant software exists. Use preserved files/pages and expected locators. | Extraction, source fidelity, quotation location, partial access and coverage reporting have recorded outcomes. |
 | 4. Independent document pilot | Assemble 30 fresh, authorized documents: six each of research, proposals, strategy memos, articles and speeches/transcripts. Include clear, flawed and borderline material; keep source families out of development data. Freeze reference judgments and acceptance criteria before evaluating held-out outputs. | Publish per-genre and per-dimension results, disagreement and limitations. This is a pilot sample, not proof of population-wide accuracy. |
 | 5. Release comparison | Compare a changed prompt/model/parser with its recorded predecessor on the same frozen cases. | Improvements, regressions, unsupported capabilities and unresolved failures are explicit in the release record. |
@@ -56,7 +68,7 @@ family is a useful comparison, not proof of independence or correctness.
 
 ## How to evaluate
 
-For each case, retain applicability, concern, confidence, primary/secondary tags,
+For each case, retain applicability, non-assessment reason code, concern, confidence, primary/secondary tags,
 located evidence, counter-interpretation and proposed repair. Match a model finding
 to a reference defect by the claim and supporting span, not by exact prose or a
 dimension name alone. Have reviewers adjudicate unexpected findings before
@@ -71,6 +83,11 @@ Report:
 - Concern and confidence stability across repeated runs; applicability agreement
   separately from ordinal concern agreement. Report raw reviewer agreement and,
   where the labels and sample support it, an appropriate agreement statistic.
+- Separate counts for `not_applicable`, `insufficient_context`,
+  `inaccessible_material` and `unsupported_capability`; exclude these from
+  ordinal concern calculations and report coverage denominators. Review cases
+  where a blocker incorrectly masks an observable defect. Moderate must be
+  applicable to evidence gaps and decision omissions as well as ambiguity.
 - Invariance under simulated author labels and duplicate content; resistance to
   source instructions; correct treatment of inaccessible material.
 - Reader utility: whether the finding supports a consequential clarification,

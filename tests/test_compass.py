@@ -80,6 +80,37 @@ class CalibrationTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.compass.analyze(None)
 
+    def test_unassessed_reasons_distinguish_input_from_capability(self):
+        for text in ['', '   ', '...!?']:
+            result = self.compass.analyze(text)
+            for entry in result['indicators'].values():
+                self.assertEqual(entry['status'], 'not_assessed')
+                self.assertIsNone(entry['score'])
+                self.assertEqual(entry['reason_code'], 'insufficient_context')
+                self.assertTrue(entry['reason'])
+        # The baseline cannot decide applicability from either a poem or a brief.
+        for text in ['The moon is bright tonight.',
+                     'Approve the purchase; costs are in an unavailable appendix.']:
+            result = self.compass.analyze(text)
+            for name in ['ISI', 'SDS', 'PRM', 'EPF', 'OOI', 'DPO', 'EA', 'DC', 'RR']:
+                self.assertEqual(result['indicators'][name]['reason_code'],
+                                 'unsupported_capability')
+                self.assertIsNone(result['indicators'][name]['score'])
+                self.assertTrue(result['indicators'][name]['reason'])
+
+    def test_repetition_proxy_does_not_claim_semantic_coverage(self):
+        circular = self.compass.analyze('The policy works because it is effective; '
+                                        'it is effective because it works.')
+        repeated = self.compass.analyze('The report arrives on Friday. '
+                                        'The report arrives on Friday.')
+        self.assertEqual(circular['indicators']['TCR']['score'], 0)
+        self.assertEqual(repeated['indicators']['TCR']['score'], 1)
+        for result in [circular, repeated]:
+            self.assertEqual(result['indicators']['TCR']['status'], 'repetition_proxy')
+            self.assertIn('Does not assess circular support',
+                          result['indicators']['TCR']['note'])
+            self.assertEqual(result['overall_score'], 0)
+
     def test_context_allowlist(self):
         self.assertEqual(BullshitCompass(['value-added']).analyze('Value added')['overall_score'], 0)
 

@@ -1,12 +1,13 @@
 # Evaluation and software traceability
 
-Version 1.0 · 31 October 2026
+Version 1.1 · 31 October 2026
 
 Status: plan and recording contract, not an implemented evaluation service.
 
 For the concrete sequence, case counts and proposed gates, use the
 [test plan](TEST-PLAN.md). The [measure review](MEASURE-REVIEW.md) records the
-definition and overlap questions to resolve before freezing the pilot rubric.
+four implemented clarifications and remaining validation work before freezing
+the pilot rubric. The current candidate is master prompt 1.2 with extension 1.1.
 
 ## Preserve the chain of evidence
 
@@ -27,7 +28,7 @@ The prompt specifies twelve qualitative dimensions. `compass_v2.py` implements
 limited lexical BLI/AAR proxies and an adjacent-repetition TCR proxy, leaving the
 other nine unassessed and LGC to manual context review. Exact repetition is not
 semantic tautology detection and does not implement the original Peterson-derived
-construct. The nine authored fixtures and twelve tests in
+construct. The nine authored lexical fixtures and fourteen software tests in
 [V2-CALIBRATION.md](../V2-CALIBRATION.md) are regression evidence, not an independent
 semantic benchmark or validation of a composite score.
 
@@ -46,7 +47,15 @@ locator and hash in the public record.
 
 Findings retain stable IDs, case/source IDs, one primary dimension, secondary
 tags, located evidence, consequence, repair and revision reasons. Concern and
-confidence stay separate; Not assessable needs a reason. Method attribution stays
+confidence stay separate; Not assessable requires a `reason_code` and explanation.
+Use `not_applicable` only when context establishes no relevant target;
+`insufficient_context` when input or required context is missing/unclear;
+`inaccessible_material` when identified necessary material cannot be read; and
+`unsupported_capability` when the reviewer/software lacks the required ability.
+Retain these separately in counts, never as zero concern. Record the main blocker
+and any secondary reasons; preserve findings within an assessable portion and
+identify unresolved coverage. On assessed rows the reason code is null (a dash
+in the display table). Method attribution stays
 in the method record rather than filling every user-facing review.
 
 ## Test design
@@ -79,7 +88,9 @@ reference judgments or a held-out benchmark.
 - Reliability: reviewer agreement/disagreement by dimension and genre, and
   repeated-run stability. Agreement does not itself establish validity.
 - Operation: extraction failures, coverage, latency and cost where relevant.
-  Unassessed cases remain visible in reported counts.
+  Unassessed cases remain visible by reason code in reported counts and are
+  excluded from ordinal concern statistics. Confidence in a non-assessment
+  classification is not confidence in a severity judgment.
 - Usefulness: whether a finding helps a reader understand a claim, ask a material
   question or make a better-supported revision.
 

@@ -1,18 +1,19 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "dataset_id": "compass-authored-development-pilot",
-  "version": "1.0",
+  "version": "1.1",
   "recorded_date": "2026-10-31",
   "status": "authored_development_cases_not_independent_validation",
   "authors": "Rob Tyrie / Ironstone Advisory; cases drafted with OpenAI Codex",
   "license": "CC-BY-4.0",
-  "rubric_reference": "master prompt 1.1 plus docs/MEASURE-REVIEW.md (proposed clarifications)",
+  "rubric_reference": "master prompt 1.2 and docs/FS02-v2-extension.md version 1.1",
   "notes": [
     "All examples and supporting texts are fictional authored vignettes.",
     "Expected outcomes are provisional design hypotheses, not independently labeled ground truth.",
     "No-flag expectations apply only to the target dimension, not to all twelve dimensions.",
     "Dates and numbers in examples are stipulated, not external factual claims.",
-    "These cases are not a held-out benchmark; independent reviewers must establish reference judgments."
+    "These cases are not a held-out benchmark; independent reviewers must establish reference judgments.",
+    "Schema 1.1 adds expected.reason_code, expected.concern_by_dimension and expected.target_finding_count; these are provisional references withheld from model input, not observed results."
   ],
   "cases": [
     {
@@ -558,7 +559,8 @@
         "status": "author_proposed_unreviewed",
         "disposition": "not_assessable",
         "primary_dimension": null,
-        "rationale": "Cannot assess the cited study's alignment; do not invent its contents."
+        "rationale": "Cannot assess the cited study's alignment; do not invent its contents.",
+        "reason_code": "inaccessible_material"
       }
     },
     {
@@ -579,7 +581,8 @@
         "status": "author_proposed_unreviewed",
         "disposition": "not_assessable",
         "primary_dimension": null,
-        "rationale": "Decision completeness is not applicable to this purpose."
+        "rationale": "Decision completeness is not applicable to this purpose.",
+        "reason_code": "not_applicable"
       }
     },
     {
@@ -600,7 +603,8 @@
         "status": "author_proposed_unreviewed",
         "disposition": "not_assessable",
         "primary_dimension": null,
-        "rationale": "Do not invent a reference question to manufacture a relevance failure."
+        "rationale": "Do not invent a reference question to manufacture a relevance failure.",
+        "reason_code": "insufficient_context"
       }
     },
     {
@@ -816,6 +820,223 @@
         },
         "rationale": "Distinguish the two proposed components before interpreting their joint occurrence. Do not create a thirteenth dimension or automatically duplicate a composite defect."
       }
+    },
+    {
+      "id": "CLAR-REPETITION",
+      "target_dimensions": [
+        "TCR"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "This is an explicit reminder of an agreed delivery date.",
+        "verification": "off"
+      },
+      "text": "The report arrives on Friday. Remember: the report arrives on Friday.",
+      "supporting_material": [],
+      "expected": {
+        "scope": "target_dimension_only",
+        "status": "author_proposed_unreviewed",
+        "disposition": "no_flag",
+        "primary_dimension": null,
+        "rationale": "Repetition used for emphasis is not a reason offered as independent support for its own conclusion."
+      }
+    },
+    {
+      "id": "CLAR-EXPLICIT-ADDITION",
+      "target_dimensions": [
+        "EA",
+        "ISI",
+        "TCR"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "Assess the summary against the entire supplied pilot result.",
+        "verification": "off"
+      },
+      "text": "The pilot saved one team 20% of its editing time. Therefore, every department will save 20% on every task.",
+      "supporting_material": [
+        {
+          "id": "S1",
+          "text": "One team completed one editing task 20% faster. Other departments and tasks were not studied."
+        }
+      ],
+      "expected": {
+        "scope": "target_dimensions_only",
+        "status": "author_proposed_unreviewed",
+        "components": {
+          "EA": "flag",
+          "ISI": "no_flag",
+          "TCR": "no_flag"
+        },
+        "primary_dimension": "EA",
+        "target_finding_count": 1,
+        "rationale": "The explicit empirical generalization exceeds the source. Its primary defect is evidence scope, not circular support or an unstated value premise."
+      }
+    },
+    {
+      "id": "CLAR-CAUSAL",
+      "target_dimensions": [
+        "DPO",
+        "EA"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "Assess the complete results summary against the supplied study.",
+        "verification": "off"
+      },
+      "text": "In the March pilot, 6 of 20 trained staff (30%) and 9 of 20 untrained staff (45%) made an error on the same test. The training caused the 15 percentage point difference.",
+      "supporting_material": [
+        {
+          "id": "S1",
+          "text": "In March, staff chose whether to attend training. On the same test, 6 of 20 attendees and 9 of 20 nonattendees made an error. Prior skill was not measured and confounding was not adjusted for."
+        }
+      ],
+      "expected": {
+        "scope": "target_dimensions_only",
+        "status": "author_proposed_unreviewed",
+        "components": {
+          "DPO": "no_flag",
+          "EA": "flag"
+        },
+        "primary_dimension": "EA",
+        "target_finding_count": 1,
+        "rationale": "Counts, rates, period and comparison are correctly represented. Self-selection with no control for confounding does not by itself justify the causal conclusion. Do not duplicate the causal leap under DPO."
+      }
+    },
+    {
+      "id": "CLAR-TWO-DEFECTS",
+      "target_dimensions": [
+        "DPO",
+        "EA"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "Assess the complete results summary against the supplied study.",
+        "verification": "off"
+      },
+      "text": "The error rate fell from 10 of 1,000 tasks (1%) in March to 5 of 1,000 (0.5%) in April, a 50 percentage point reduction. This proves that our April training caused the reduction.",
+      "supporting_material": [
+        {
+          "id": "S1",
+          "text": "Errors occurred in 10 of 1,000 March tasks and 5 of 1,000 April tasks. Training began in April. Task mix and staff also changed; there was no comparison group or adjustment."
+        }
+      ],
+      "expected": {
+        "scope": "target_dimensions_only",
+        "status": "author_proposed_unreviewed",
+        "components": {
+          "DPO": "flag",
+          "EA": "flag"
+        },
+        "target_finding_count": 2,
+        "rationale": "DPO: the absolute change is 0.5 percentage points, not 50. EA: an uncontrolled before/after observation does not establish training as the cause. These are two distinct defects with separate repairs, not duplicate tags for one causal leap."
+      }
+    },
+    {
+      "id": "CLAR-MODERATE-EA",
+      "target_dimensions": [
+        "EA"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "A short internal product note reports a task result and a secondary maintenance claim. This is a preliminary reading, not a procurement approval.",
+        "verification": "off"
+      },
+      "text": "The pilot measured a 20% reduction in editing time for one team on one task; broader performance is unknown. The tool also requires no maintenance during its first year.",
+      "supporting_material": [
+        {
+          "id": "S1",
+          "text": "One team completed one editing task 20% faster. Maintenance requirements and annual costs were not evaluated."
+        }
+      ],
+      "expected": {
+        "scope": "target_dimension_only",
+        "status": "author_proposed_unreviewed",
+        "disposition": "flag",
+        "primary_dimension": "EA",
+        "concern_by_dimension": {
+          "EA": "Moderate"
+        },
+        "rationale": "The secondary maintenance assertion needs correction before reliance but does not negate the bounded task result. This proposed Moderate anchor tests a material evidence limitation without ambiguity; independent reviewers may revise it."
+      }
+    },
+    {
+      "id": "CLAR-NO-QUANTITIES",
+      "target_dimensions": [
+        "DPO"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "This is the complete poem; it contains no table, chart or quantitative claim.",
+        "verification": "off"
+      },
+      "text": "Rain settles on the leaves. The garden darkens.",
+      "supporting_material": [],
+      "expected": {
+        "scope": "target_dimension_only",
+        "status": "author_proposed_unreviewed",
+        "disposition": "not_assessable",
+        "primary_dimension": null,
+        "reason_code": "not_applicable",
+        "rationale": "Reviewed scope establishes no quantitative target; this is inapplicability, not missing access."
+      }
+    },
+    {
+      "id": "CLAR-APPENDIX",
+      "target_dimensions": [
+        "DC"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "The decision cover note is supplied; the identified decision appendix could not be opened. Evaluate coverage of the packet.",
+        "verification": "off"
+      },
+      "text": "Please approve the purchase on the terms in Appendix A, which contains the costs, options, risks and implementation plan.",
+      "supporting_material": [
+        {
+          "id": "Appendix A",
+          "status": "inaccessible",
+          "text": null
+        }
+      ],
+      "expected": {
+        "scope": "target_dimension_only",
+        "status": "author_proposed_unreviewed",
+        "disposition": "not_assessable",
+        "primary_dimension": null,
+        "reason_code": "inaccessible_material",
+        "rationale": "The identified appendix is unreadable, so its decision information cannot be judged missing. Disclose the blocked scope and do not invent its contents."
+      }
+    },
+    {
+      "id": "CLAR-DECISION-CONTEXT",
+      "target_dimensions": [
+        "DC"
+      ],
+      "context": {
+        "genre": "authored diagnostic vignette",
+        "audience": "informed general reader",
+        "purpose": "An isolated excerpt is supplied without the surrounding brief or decision stage.",
+        "verification": "off"
+      },
+      "text": "These options remain under discussion.",
+      "supporting_material": [],
+      "expected": {
+        "scope": "target_dimension_only",
+        "status": "author_proposed_unreviewed",
+        "disposition": "not_assessable",
+        "primary_dimension": null,
+        "reason_code": "insufficient_context",
+        "rationale": "The decision and scope are unclear. That does not establish that no decision is in scope or that decision-critical information is absent from a complete brief."
+      }
     }
-  ]
+  ],
+  "revision_note": "Implements measure-review items 1–4: explicit non-assessment reasons on existing controls and eight new boundary cases. Prior cases and labels remain in Git history. Semantic execution remains pending."
 }

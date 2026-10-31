@@ -1,11 +1,12 @@
 # Review of the twelve measures
 
-Review 1.0 · 31 October 2026
+Review 1.1 · 31 October 2026
 
 Status: design audit by OpenAI Codex with Rob Tyrie's direction. This is not an
 independent expert review, reliability study or empirical validation. It compares
-the current prompt (1.1), extension and Python baseline and identifies what to
-test or clarify before treating the software as a semantic reviewer.
+the prompt, extension and Python baseline. The initial audit examined prompt
+1.1; this revision records the four clarifications implemented in prompt 1.2.
+Semantic accuracy still needs independent evaluation.
 
 ## Overall finding
 
@@ -44,41 +45,63 @@ record genre, audience, purpose, domain and access limits before applying these
 questions. Appropriate technical prose and culturally unfamiliar wording are
 essential non-finding cases.
 
-## Priority clarifications before a frozen semantic pilot
+## Four clarifications implemented; semantic testing pending
 
-These are proposed clarifications, not silent edits to prompt 1.1. An executor
-must select and archive the actual rubric used for a run. Keep 1.1 as a baseline
-if testing a revised prompt against it.
+Prompt 1.2 and extension 1.1 implement items 1–4 from the initial audit.
+Prompt 1.1 remains in Git history at `ca621d707c85dbc06e771cfaa6317cb2bafac603`.
+Select and archive the actual rubric used for each run; do not relabel earlier
+outputs as if they used these rules.
 
-1. **TCR versus the original Peterson-derived construct.** Test circular support
-   and unsupported argumentative additions separately before testing their joint
-   occurrence. PWI is not just exact repetition; ISI is a later generalization.
-   The four PWI cases in the pilot vary the two proposed components independently.
-   Assess whether their interaction adds a useful diagnosis without inventing a
-   thirteenth dimension. Distinct defects can have linked findings; one defect
-   should not become multiple independent counts through secondary tags.
-2. **DPO/EA wording.** The current DPO checklist includes causal claims drawn from
-   correlation, while the overlap rule assigns unsupported inference to EA.
-   Proposed clarification: DPO owns representation of data; EA owns what is
-   inferred from it. Apply one primary tag per underlying defect.
-3. **Concern anchors across all dimensions.** Prompt 1.1's Moderate anchor says
-   "recurring or material ambiguity," which is narrower than EA/DC/RR and several
-   other dimensions. Proposed wording: a recurring or material limitation that
-   requires clarification or repair before reliance. Keep centrality, severity
-   and prevalence distinct; do not penalize length alone.
-4. **Applicability versus inability to assess.** The current display label Not
-   assessable covers both. Preserve an explicit reason such as not applicable,
-   missing context, inaccessible material or unsupported capability. Report these
-   separately in evaluation counts; none is a clean result.
-5. **Evidence and rewrite requirements.** A flag must identify the problem and
-   survive its strongest reasonable alternative reading. A repair must preserve
-   uncertainty and must not invent facts to make a passage appear concrete.
+1. **Repetition, circular support and argumentative additions.** TCR requires an
+   identified premise/conclusion dependency, not repeated wording. Test circular
+   support and unsupported additions independently and together. Assign an
+   unstated contestable premise to ISI and an explicit claim beyond its support
+   to EA. Open values and useful emphasis are not defects by themselves. This
+   operationalizes Rob's original Peterson-derived contribution while retaining
+   PWI as historical terminology; it neither adds a thirteenth dimension nor
+   proves the usefulness of a combined measure.
+2. **DPO/EA boundary.** Removed causal claims from the DPO checklist. DPO owns
+   quantitative representation; EA owns inference, including causal overreach
+   with correctly presented numbers. One causal leap gets one finding. A wrong
+   percentage-point claim and an independently unsupported causal conclusion
+   can be two linked defects with distinct repairs.
+3. **Concern anchors.** Moderate now covers a recurring or material limitation
+   in meaning, reasoning, evidence, decision completeness or responsiveness that
+   requires clarification or repair before reliance. It is no longer restricted
+   to ambiguity. Centrality, severity and prevalence guide the judgment; length
+   alone does not. These remain provisional qualitative anchors.
+4. **Non-assessment reasons.** Keep the display label Not assessable, but require
+   `not_applicable`, `insufficient_context`, `inaccessible_material` or
+   `unsupported_capability` and a concrete explanation. Inapplicability requires
+   enough context to establish it. Report reasons separately in evaluation;
+   none is a clean result or zero. Partial access must not erase supported
+   findings or turn inaccessible evidence into a confirmed omission. The Python
+   baseline now distinguishes empty input from its missing semantic capability
+   through additive reason fields; it does not infer applicability.
+
+The existing fifth audit requirement remains: a flag must survive its strongest
+reasonable alternative reading, and a repair must preserve uncertainty without
+inventing facts. The full reason-code definitions and concern anchors are in the
+[extension](FS02-v2-extension.md) and the self-contained master prompt.
+
+| Change | Authored semantic cases or software checks |
+|---|---|
+| Separate the original construct's components | TCR-P/N, ISI-P/N, four PWI factorial cases, CLAR-REPETITION and CLAR-EXPLICIT-ADDITION |
+| Resolve DPO/EA overlap | DPO-P/N, EA-P/N, CLAR-CAUSAL and CLAR-TWO-DEFECTS |
+| Broaden Moderate | CLAR-MODERATE-EA proposes an evidence-gap anchor without ambiguity; reviewers must independently judge severity |
+| Distinguish non-assessment reasons | Three existing access/purpose controls, CLAR-NO-QUANTITIES, CLAR-APPENDIX and CLAR-DECISION-CONTEXT; software regression checks for empty input versus unsupported capability |
+
+These mappings describe prepared coverage. Semantic cases have not yet been
+executed against independently established reference judgments.
 
 ## What is already checked
 
-The existing twelve baseline regression tests pass on the unchanged code used
-for this update. A separate [lexical diagnostic run](../evaluation/lexical-diagnostic-run.json)
-records concrete limitations. It is a demonstration, not a semantic benchmark.
+Fourteen baseline regression tests pass after this revision, including two new
+checks for reason reporting and repetition/semantic capability separation.
+Lexical scoring is unchanged. The earlier twelve-test result and the separate
+[lexical diagnostic run](../evaluation/lexical-diagnostic-run.json) remain
+historical evidence from the prior baseline. That run records concrete
+limitations; it is a demonstration, not a semantic benchmark.
 
 | Diagnostic | Observed baseline output | Implication |
 |---|---|---|
@@ -92,7 +115,7 @@ These outcomes are consistent with the code's disclosed limitations. They do
 not justify treating a lexical zero as a clean semantic review or a dictionary
 match as a confirmed substantive defect.
 
-The [36 authored pilot cases](../evaluation/pilot-cases.json) cover all twelve
+The [44 authored pilot cases](../evaluation/pilot-cases.json), dataset 1.1, cover all twelve
 dimensions, boundary conditions and the original Peterson-derived construct.
 Their expected outcomes are provisional design hypotheses. Independent reviewers
 must establish reference judgments; cases created during development are not a

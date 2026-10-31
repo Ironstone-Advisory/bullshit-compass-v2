@@ -1,5 +1,5 @@
 BULLSHIT COMPASS — MASTER REVIEW PROMPT
-Version 1.1 | 31 October 2026 | Developed with AI from Rob Tyrie's Bullshit Compass v2 repository.
+Version 1.2 | 31 October 2026 | Developed with AI from Rob Tyrie's Bullshit Compass v2 repository.
 
 HOW TO USE
 Paste the prompt between BEGIN and END into an AI assistant. Attach documents, supply one or more URLs, or paste text. Browsing is needed to read live URLs and perform optional external verification. The prompt is self-contained; the assistant need not access the repository to apply it.
@@ -42,10 +42,12 @@ Apply the same standard to arguments you favor and oppose. Do not treat unfamili
 3. EXAMINE ALL TWELVE DIMENSIONS
 
 TCR — Tautological Camouflage Rate
-Look for circular explanations, conclusions restated as reasons, and apparent claims that add no information. Distinguish these from useful definitions, summaries and deliberate emphasis. Topic similarity alone is not tautology.
+Identify the conclusion and the reason offered for it. Flag circular support when the reason assumes or restates the conclusion without independent support. Explain the dependency using the actual passage. Literal repetition, topic similarity, a useful definition, a summary or deliberate emphasis is not sufficient for a TCR finding. Repetition can be recorded as a textual observation without a concern finding; circular reasoning can occur without repeated words.
 
 ISI — Ideological Smuggling Index
-Identify a contestable premise embedded as an obvious truth, or an unsupported leap from an agreeable premise to a normative conclusion. State the missing premise explicitly. Do not infer deliberate smuggling or label an openly stated value position as a defect merely because it is debatable.
+Identify a contestable premise embedded as an obvious truth, or an unsupported leap from an agreeable premise to a normative conclusion. State the missing premise explicitly and show why the inference needs it. An argumentative addition is not automatically circular: use ISI for an unstated contestable premise, and EA when an explicit added claim exceeds the available support. An openly stated value position is not a defect merely because it is debatable. Do not infer deliberate smuggling.
+
+For the original Peterson-derived pattern, test circular support and unsupported argumentative additions independently, then describe any connection. Circular support belongs to TCR; additions are assigned to ISI or EA according to the defect. Neither component requires the other. If two distinct defects occur, link their findings; if there is only one underlying defect, use one finding with secondary tags. This is an operational separation of Rob Tyrie's original design contribution, not a new thirteenth dimension or a claim about a named person's current text.
 
 SDS — Semantic Drift Score
 Look for unexplained shifts in topic, definitions, scope or standards of evidence that weaken the argument. Distinguish a developed analogy or relevant digression from changing the subject. Follow key terms across the document and across pages.
@@ -66,20 +68,20 @@ OOI — Orwellian Obfuscation Index
 Look for euphemism, inflated diction, exhausted metaphors, unnecessary verbal padding and constructions that obscure agency or consequences. Explain the actual loss of meaning; do not enforce a mechanical ban on passive voice or long words.
 
 DPO — Data Presentation Obfuscation (experimental)
-Inspect missing denominators, baselines, time periods, units, sample sizes and selection criteria; relative versus absolute changes; incompatible comparisons; causal claims drawn from correlation; selective reporting; and misleading chart scales where visible. Separate an observed presentation defect from an unverified suspicion about the underlying data. Numbers and citations are not automatic evidence of rigor.
+Inspect how quantitative information is represented: missing denominators, baselines, time periods, units, sample sizes and selection criteria; relative versus absolute changes; incompatible comparisons; selectively displayed numbers; and misleading chart scales where visible. DPO owns an identifiable presentation defect. EA owns an unsupported inference from those data, including causal overreach even when every number is presented correctly. Selective citation or an unsupported generalization belongs to EA unless a separate quantitative presentation defect is shown. Separate an observed defect from an unverified suspicion about the underlying data. Numbers and citations are not automatic evidence of rigor.
 
 EA — Evidence Alignment
 Compare the strength, scope and wording of each consequential claim with the support actually available. Check whether citations support the particular claim; whether a narrow result is generalized; whether association becomes causation without adequate justification; whether summaries remove qualifications; and whether apparently independent sources repeat one origin. Trace source dependence rather than assume it. Observational designs may support causal inference under appropriate assumptions. An inaccessible source is not a failed source; distinguish unsupported in the reviewed material from contradicted by reviewed evidence. EA does not establish truth. With external verification Off, assess supplied evidence and accessible directly cited sources within scope; reserve independent fact searches for verification On.
 
 DC — Decision Completeness
-Identify the decision, intended audience and declared scope. Examine whether material benefits, costs, risks, alternatives, dependencies, implementation burden, time horizon, uncertainty and relevant consequences of no action are available. For each missing item, explain exactly how its absence affects the stated choice. Check reviewed appendices and signposted supporting pages before flagging an omission. Do not demand every possible detail or infer intentional concealment. Use Not assessable with a reason if no decision is in scope or access prevents assessment. A short introduction or poem need not function as a complete business case.
+Identify the decision, intended audience and declared scope. Examine whether material benefits, costs, risks, alternatives, dependencies, implementation burden, time horizon, uncertainty and relevant consequences of no action are available. For each missing item, explain exactly how its absence affects the stated choice. Check reviewed appendices and signposted supporting pages before flagging an omission. Do not demand every possible detail or infer intentional concealment. Use Not assessable with not_applicable when the reviewed purpose establishes that no decision is in scope; use insufficient_context when the decision or scope is unclear, or inaccessible_material when needed supporting material cannot be read. A short introduction or poem need not function as a complete business case. An observable decision-critical omission from a complete reviewed brief can be a DC finding; do not hide it under insufficient_context.
 
 RR — Response Relevance
-Preserve the actual question, requirement, brief or stated purpose, with its location. Compare the answer with that reference. Distinguish direct answers, partial answers, explicit deferrals or refusals, and substitution of a different question. Check changes in metric, time period or scope that leave the request unresolved. Do not invent a question merely to create a finding. An explicit unknown, legitimate refusal or correction of a false premise can be responsive. Use Not assessable when there is no sufficiently clear reference question or purpose.
+Preserve the actual question, requirement, brief or stated purpose, with its location. Compare the answer with that reference. Distinguish direct answers, partial answers, explicit deferrals or refusals, and substitution of a different question. Check changes in metric, time period or scope that leave the request unresolved. Do not invent a question merely to create a finding. An explicit unknown, legitimate refusal or correction of a false premise can be responsive. Use Not assessable with insufficient_context when there is no sufficiently clear reference question or purpose; do not infer not_applicable merely because the brief was not supplied.
 
 SYNTHESIS AND OVERLAP RULE
 EA asks whether support justifies a claim; DC asks whether the information needed for the stated decision is present; RR asks whether the stated question or purpose is addressed. These relationships add coverage beyond the original nine without making every related phenomenon a new axis. LGC remains the context layer, not a thirteenth dimension. Research attribution and the synthesis rationale are supplied after this prompt; do not insert them into every review.
-Assign each defect one primary dimension and any secondary tags. Keep one finding ID and count the defect once. Use AAR for unclear commitments, DPO for defective quantitative presentation, EA for an unsupported inference, DC for a decision-critical omission, RR for a question left unanswered, and SDS for unexplained internal drift. Certainty inflation, causal overreach, misleading implication and citation amplification are diagnostic flags, not additional dimensions. Concern rates the gap or defect; a high EA concern means poor alignment.
+Assign each defect one primary dimension and any secondary tags. Keep one finding ID and count the defect once. Use TCR for circular support, ISI for an unstated contestable premise, AAR for unclear commitments, DPO for defective quantitative presentation, EA for an unsupported inference, DC for a decision-critical omission, RR for a question left unanswered, and SDS for unexplained internal drift. A misrepresented number and an independently unsupported causal conclusion may warrant two linked findings; the same causal leap does not warrant separate DPO and EA findings. Certainty inflation, causal overreach, misleading implication and citation amplification are diagnostic flags, not additional dimensions. Concern rates the gap or defect; a high EA concern means poor alignment.
 
 TEXT QUALITY AND SOURCE FIDELITY
 Apply the same standards to human, AI-assisted, AI-generated and unknown-origin articles, speeches/transcripts, documents, research, proposals, web pages and conversations. Review the text on its merits regardless of how it was produced. Do not request authorship or creation-process information, infer it from style, or include an AI-authorship assessment. Apply the same criteria regardless of provenance. Assess a speech's text without claiming to assess delivery or audience effects from a transcript alone.
@@ -107,13 +109,23 @@ Absence of support here does not prove absence of evidence everywhere. A clear s
 5. RATE CONCERN WITHOUT INVENTING PRECISION
 
 For each dimension use: None observed / Low / Moderate / High / Not assessable. These are qualitative editorial judgments, not measured rates, validated scores or probabilities.
-- None observed: no material instance found in reviewed content.
-- Low: a localized problem with little effect on the central meaning.
-- Moderate: recurring or material ambiguity requiring clarification before reliance.
-- High: pervasive fog or a central reasoning defect that seriously limits interpretation or reliance.
-- Not assessable: insufficient access, context or relevant material.
 
-Report confidence separately as Low / Medium / High, with reasons based on access, context and clarity of evidence. A severe concern can have low confidence. Do not interpret missing evidence as a clean result. For DPO, use Not assessable when there is no relevant quantitative content.
+- None observed: no material instance found in the reviewed scope, with enough access and context to assess it.
+- Low: a localized problem with little effect on the central meaning.
+- Moderate: a recurring or material limitation in meaning, reasoning, evidence, decision completeness or responsiveness that requires clarification or repair before reliance.
+- High: pervasive fog or a central reasoning defect that seriously limits interpretation or reliance.
+- Not assessable: no concern judgment can be made for the stated scope; supply one of the reason codes below. This is an assessment state, not a severity level.
+
+For every Not assessable entry, give a primary reason code and a concrete explanation:
+
+- not_applicable: the reviewed genre, purpose and scope establish that this dimension has no relevant target; for example, DC for a poem with no decision in scope, or DPO for fully reviewed material with no quantitative content. Absence of a brief alone does not establish this.
+- insufficient_context: the input, question, decision, comparison source or surrounding context needed to judge the dimension was not supplied or is unclear. Empty input belongs here. Ask for the specific missing information; do not invent it.
+- inaccessible_material: identified material needed for the judgment could not be read, such as a blocked cited source or unavailable appendix. Record what was attempted and the affected scope; do not call the material absent or defective.
+- unsupported_capability: the reviewer or software lacks a required capability, such as browsing, OCR or semantic assessment. Name the capability. The Python lexical baseline cannot infer applicability or semantic clarity from keyword counts.
+
+If several reasons apply, record the main blocker and the others in the explanation. These states must remain separate in evaluation counts; none is a zero concern score or a clean result. With partial coverage, report supported findings for the reviewed portion and disclose the unresolved scope and reason; do not discard observable defects or imply full coverage. An unsupported claim in fully reviewed material is a possible EA finding, not automatically an inability to assess.
+
+Report confidence separately as Low / Medium / High, with reasons based on access, context and clarity of evidence. A severe concern can have low confidence. For Not assessable, confidence refers only to the basis for that classification, never to an unmade concern judgment. Do not interpret missing evidence as a clean result.
 
 Give an overall qualitative concern level using centrality, severity and prevalence, with a short explanation. Do not mechanically average indicator labels or let a decisive flaw disappear among clean indicators. Do not penalize long documents merely for having more examples. For multiple sources, report each separately before a collection-level synthesis; qualify all conclusions by coverage.
 
@@ -134,7 +146,7 @@ B. Scope and context
 List sources actually reviewed, coverage/access gaps, audience/genre assumptions and any LGC adjustments. State whether external verification was performed and whether original sources were available for fidelity checks. Do not add an authorship assessment.
 
 C. Compass profile
-Table: Indicator | Concern | Confidence | Short evidence-based explanation. Include all twelve dimensions (TCR, ISI, SDS, AAR, BLI, PRM, EPF, OOI, DPO, EA, DC, RR). “None observed” and “Not assessable” are valid outcomes.
+Table: Indicator | Concern | Confidence | Reason code | Short evidence-based explanation. Include all twelve dimensions (TCR, ISI, SDS, AAR, BLI, PRM, EPF, OOI, DPO, EA, DC, RR). Use a reason code for every Not assessable entry and a dash otherwise; disclose partial-coverage blockers in the explanation. “None observed” requires enough access and context to assess the reviewed scope. Neither it nor “Not assessable” is a finding of factual truth.
 
 D. Findings that matter
 For Standard depth, present up to eight priority findings with IDs, excerpts or clearly labeled paraphrases, locators, one primary dimension, any secondary tags, consequence and repair. Quick depth: up to three. Deep: section-level findings, grouped and deduplicated, with a coverage ledger. Use fewer when warranted.
@@ -167,7 +179,11 @@ Read on 31 October 2026:
 - Inherited implementation: https://github.com/Ironstone-Advisory/bullshit-compass-v2/blob/main/code
 - Lineage: https://github.com/Ironstone-Advisory/bullshit-compass-v2/blob/main/HISTORY.md
 
-The repository contains overlapping draft specifications. This adaptation retains the original nine indicators and ISI terminology from spec-original, and adds EA, DC and RR under docs/FS02-v2-extension.md. It preserves LGC and the rules against unsupported truth claims, intent inference and author profiling. Prompt version 1.1 is the twelve-dimension review; the Python lexical baseline does not implement semantic review of these dimensions.
+The repository contains overlapping draft specifications. This adaptation retains the original nine indicators and ISI terminology from spec-original, and adds EA, DC and RR under docs/FS02-v2-extension.md. It preserves LGC and the rules against unsupported truth claims, intent inference and author profiling. Prompt version 1.2 is the current twelve-dimension review; the Python lexical baseline does not implement semantic review of these dimensions.
+
+Version 1.2 clarification: separate repetition, circular support and unsupported argumentative additions; give DPO quantitative representation and EA inference; broaden Moderate beyond ambiguity; and require explicit reasons for non-assessment. These changes implement items 1–4 in docs/MEASURE-REVIEW.md. The prior prompt remains available in Git history for versioned comparisons. The revised instructions and authored boundary cases are design work, not evidence that semantic review accuracy has improved.
+
+Project background: Rob Tyrie reports developing the idea from 2022 and a first version in 2024. Frankfurt's On Bullshit, Graeber's work and Pennycook's research were influences. Tyrie's Peterson-derived measure began with his own observations of tautologies and unsupported additions in argument and exposition; it is credited as his original project contribution, separately from those influences. Later PWI/ISI terminology and this operational separation do not establish worldwide novelty or empirical validity. See docs/BACKGROUND-AND-PROVENANCE.md and its dated evidence ledger for distinctions between author accounts, recovered conversations and repository artifacts.
 
 New operational additions in this prompt: document/URL intake, bounded web scope, source IDs and locators, evidence states, qualitative concern rubric, counter-interpretation checks, optional separate fact verification, explicit rewrite placeholders and revision traceability. These are prompt-design extensions, not claims that the repository has implemented or validated them. The optional fact-checking mode extends the workflow beyond the Compass's linguistic remit.
 

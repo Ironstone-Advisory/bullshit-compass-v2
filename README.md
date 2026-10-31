@@ -18,7 +18,7 @@ Authorship, research influence and empirical validation are recorded separately.
 - [Development evidence ledger](history/provenance/2026-10-31-conversation-reconstruction.md)
 - [Evaluation and software traceability](docs/EVALUATION-AND-TRACEABILITY.md)
 - [Twelve-measure review](docs/MEASURE-REVIEW.md) and [test plan](docs/TEST-PLAN.md),
-  with [36 authored pilot cases](evaluation/pilot-cases.json)
+  with [44 authored pilot cases](evaluation/pilot-cases.json)
 
 The current review is qualitative and assesses text irrespective of human or AI
 authorship. Framework attribution belongs in these documents; individual reviews
@@ -26,7 +26,7 @@ should concentrate on findings, evidence and repairs.
 
 ## Twelve-dimension qualitative review (31 October 2026)
 
-Use the [master review prompt](prompts/bullshit-compass-master-prompt.txt) with
+Use the [master review prompt, version 1.2](prompts/bullshit-compass-master-prompt.txt) with
 uploaded documents, pasted text or URLs. It retains the nine original indicators
 and adds **Evidence Alignment (EA)**, **Decision Completeness (DC)** and
 **Response Relevance (RR)**. LGC remains the context layer.
@@ -40,6 +40,13 @@ checks where originals are available; it does not identify AI authorship.
 The prompt supplies qualitative review instructions. The Python baseline below
 does not implement semantic assessment of these dimensions; it reports the new
 fields as `not_assessed` rather than inventing scores.
+
+Prompt 1.2 separates repetition, circular support and unsupported argumentative
+additions; assigns quantitative presentation to DPO and inference to EA; broadens
+Moderate concern beyond ambiguity; and distinguishes inapplicability, missing
+context, inaccessible material and unsupported capability with explicit reason
+codes. The [measure review](docs/MEASURE-REVIEW.md) maps these rules to prepared
+test cases. Their semantic effectiveness has not yet been independently evaluated.
 
 ## Runnable v2 baseline (31 October 2026)
 

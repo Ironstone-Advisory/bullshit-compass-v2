@@ -1,6 +1,6 @@
 # Bullshit Compass v2: three additional qualitative dimensions
 
-Version 1.0 · 31 October 2026  
+Version 1.1 · 31 October 2026
 Framework: Rob Tyrie / Ironstone Advisory / Finger Spider Project  
 Research synthesis and drafting: Rob Tyrie with OpenAI Codex
 
@@ -21,7 +21,11 @@ contextual interpretation layer, not a thirteenth scored dimension.
 This document is a v2 extension to the inherited `spec-original`, not a rewrite
 of the historical RFCs. It governs the three additions and their boundaries with
 the earlier nine. The executable review instructions are in
-[the master prompt](../prompts/bullshit-compass-master-prompt.txt), version 1.1.
+[the master prompt](../prompts/bullshit-compass-master-prompt.txt), version 1.2.
+
+This revision implements the first four [measure-review](MEASURE-REVIEW.md)
+clarifications. It changes operational instructions and reporting; it does not
+establish empirical validity or add another dimension.
 
 These are qualitative judgments supported by passages, source locations and
 explicit reasons. A finding describes a limitation of the reviewed material; it
@@ -120,9 +124,15 @@ Cite the claim and study limits; flag unsupported generalization.
 the result preliminary and states that broader effects are unknown.
 
 **Relationship to the nine:** DPO owns defects in how numbers or charts are
-presented. EA owns the inferential step from evidence to conclusion. ISI owns an
-unstated contestable premise. PRM owns inappropriate scientific rhetoric. One
-finding can carry secondary tags without becoming several independent defects.
+presented: units, denominators, baselines, scales and quantitative comparisons.
+EA owns the inferential step from evidence to conclusion, including causal
+overreach when all numbers are correctly represented. Selective citation belongs
+to EA; selectively displayed numbers belong to DPO when a presentation defect is
+demonstrable. ISI owns an unstated contestable premise. PRM owns inappropriate
+scientific rhetoric. One finding can carry secondary tags without becoming
+several independent defects. A misrepresented number and a separately unsupported
+causal conclusion can warrant two linked findings; one causal leap must not be
+counted once under DPO and again under EA.
 
 ## 11. Decision Completeness (DC)
 
@@ -156,9 +166,11 @@ and confident recommendations that conceal known limitations in the supplied tex
 
 **Boundaries and counterexamples:** Completeness is relative to purpose, not an
 exhaustive checklist. A short teaser, poem or descriptive page is not a full
-investment case. Use Not assessable, with reason “not applicable to this purpose,”
-when no decision is in scope. If access to a clearly linked appendix is blocked,
-record an access limit rather than asserting that the author omitted its contents.
+investment case. Use Not assessable with `not_applicable` when reviewed purpose
+and scope establish that no decision is in scope; use `insufficient_context`
+when the decision or stage is unclear. If access to a clearly linked appendix is
+blocked, use `inaccessible_material` for the affected judgment rather than
+asserting that the author omitted its contents.
 Do not label an omission intentional or claim knowledge of hidden facts.
 
 **Illustrative positive finding:** A proposal supplies annual savings and asks for
@@ -211,13 +223,57 @@ we will provide an update on Friday.” The uncertainty is explicit and relevant
 **Relationship to the nine:** SDS evaluates coherence within the text. RR compares
 the text with an external question or its own stated purpose. A coherent answer
 can still address the wrong question. Without a sufficiently clear reference
-question or purpose, mark RR Not assessable.
+question or purpose, mark RR Not assessable with `insufficient_context`.
+
+## Circular support and argumentative additions
+
+The current TCR rule requires an identifiable premise/conclusion dependency:
+the offered reason assumes or restates the conclusion without independent
+support. Exact repetition, topic similarity, definitions, summaries and emphasis
+do not establish this defect. Circularity can occur without repeated words.
+
+For Rob Tyrie's original Peterson-derived construct, inspect circular support
+and unsupported argumentative additions separately. TCR covers the former; ISI
+covers an unstated contestable premise, while EA covers an explicit added claim
+that exceeds its support. Openly declared values are not defects merely because
+they are debatable. The components can occur independently or together. Link
+distinct findings; count a single defect once. This operational separation
+preserves the original-contribution attribution and does not add an axis or
+transfer validation from the cited research. PWI remains historical terminology.
 
 ## Shared reporting and overlap rules
 
-Use the existing concern labels: None observed, Low, Moderate, High or Not
-assessable. Report confidence separately and explain it. Do not average the
-labels. Record an applicability reason when a dimension cannot be assessed.
+Use these concern anchors across all twelve dimensions:
+
+| Label | Meaning |
+|---|---|
+| None observed | No material instance found in the reviewed scope, with enough access and context to assess it. |
+| Low | A localized problem with little effect on the central meaning. |
+| Moderate | A recurring or material limitation in meaning, reasoning, evidence, decision completeness or responsiveness that requires clarification or repair before reliance. |
+| High | Pervasive fog or a central reasoning defect that seriously limits interpretation or reliance. |
+| Not assessable | No concern judgment can be made for the stated scope; record a reason code below. This is an assessment state, not a severity level. |
+
+Report confidence separately as Low, Medium or High and explain it. For Not
+assessable, confidence concerns the classification only, not an unmade concern
+judgment. Do not average labels. Consider centrality, severity and prevalence
+without penalizing document length alone.
+
+Every Not assessable entry must include a primary `reason_code` and an explanation:
+
+| Reason code | Required basis and example |
+|---|---|
+| `not_applicable` | Reviewed purpose and scope establish no relevant target: DC for a poem with no decision, or DPO for fully reviewed non-quantitative material. |
+| `insufficient_context` | Needed input, question, decision, comparison source or surrounding context is missing or unclear, including empty input. A missing brief does not establish inapplicability. |
+| `inaccessible_material` | Identified necessary material could not be read, such as a blocked reference or appendix. Record attempted access and affected coverage. |
+| `unsupported_capability` | The reviewer/software lacks a required capability, such as browsing, OCR or semantic assessment. Name the limitation. |
+
+Keep these reasons separate in evaluation counts; none is a clean result or zero
+score. If several apply, select the main blocker and explain the others. With
+partial coverage, retain supported findings and identify unresolved scope; do
+not turn unavailable material into a claimed omission. Conversely, an observable
+decision-critical omission from a complete brief, or an unsupported claim in
+fully reviewed material, can warrant a DC or EA finding. Do not classify those
+defects as inability to assess merely because the text lacks needed substance.
 
 Every finding needs a stable ID, a primary dimension, any secondary tags,
 source location(s), the comparison or missing item, practical consequence,
@@ -227,6 +283,8 @@ This is concise supporting reasoning, not a request for hidden model deliberatio
 | If the defect primarily concerns... | Primary dimension |
 |---|---|
 | What a sentence commits to | AAR |
+| Circular support for a conclusion | TCR |
+| An unstated contestable premise required by an inference | ISI |
 | What its evidence justifies | EA |
 | What a stated decision requires but the reviewed material lacks | DC |
 | Whether the question was addressed | RR |
@@ -272,7 +330,10 @@ remain distinct from qualitative concern ratings.
 The master prompt supports qualitative review across all twelve dimensions.
 This means the instructions are present, not that reviewer accuracy has been
 established. The Python lexical baseline reports EA, DC and RR as `not_assessed`
-with null scores; its lexical score is unchanged. The illustrations above are
+with null scores and `reason_code: unsupported_capability` for nonempty text;
+all dimensions use `insufficient_context` for empty/non-word input. Existing
+status names and lexical scores are unchanged. The three proxy outputs remain
+proxies, not completed semantic assessments. The illustrations above are
 authored review examples, not an independent validation dataset.
 
 Future evaluation should include independent reviewers, agreement and disagreement

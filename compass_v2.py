@@ -79,7 +79,11 @@ class BullshitCompass:
         if not isinstance(text, str):
             raise TypeError("text must be a string")
         count = len(tokens(text))
-        profile = {name: {"status": "not_assessed", "score": None}
+        reason_code = "insufficient_context" if count == 0 else "unsupported_capability"
+        reason = ("No words were supplied for assessment." if count == 0 else
+                  "This lexical baseline does not implement semantic assessment of this dimension.")
+        profile = {name: {"status": "not_assessed", "score": None,
+                          "reason_code": reason_code, "reason": reason}
                    for name in INDICATORS}
         if count == 0:
             return {"status": "insufficient_text", "overall_score": None,
@@ -115,7 +119,8 @@ class BullshitCompass:
         profile["TCR"] = {
             "status": "repetition_proxy", "score": len(repeats) / max(1, len(segments)-1),
             "matches": repeats,
-            "note": "Adjacent exact repetition only; excluded from overall score."
+            "note": ("Adjacent exact repetition only; excluded from overall score. "
+                     "Does not assess circular support or unsupported argumentative additions.")
         }
         return {
             "status": "partial_assessment", "overall_score": round(score, 6),
